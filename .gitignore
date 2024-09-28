@@ -1,0 +1,28 @@
+# CMake build files
+/build/
+/CMakeFiles/
+/CMakeCache.txt
+/cmake_install.cmake
+/Makefile
+
+# CLion specific files
+.idea/
+/cmake-build-*/
+
+# Compiled binary files
+*.out
+*.exe
+*.o
+*.obj
+*.so
+*.dll
+*.dylib
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+
+.DS_Store
+Thumbs.db
