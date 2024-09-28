@@ -7,7 +7,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(TRACEROUTE_EXECUTE_NAME traceroute)
 set(TRACEROUTE_TESTS_NAME traceroute_tests)
 
-add_executable(${TRACEROUTE_EXECUTE_NAME} src/main.cpp src/Traceroute.cpp)
+add_executable(${TRACEROUTE_EXECUTE_NAME} src/main.cpp src/Traceroute.cpp
+        include/Traceroute.hpp)
 
 
 add_compile_options(-pedantic -Werror -Wextra)
@@ -23,7 +24,7 @@ endif()
 # Add google test
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
-include_directories(${PROJECT_SOURCE_DIR}/include/)
+include_directories(${PROJECT_SOURCE_DIR}/include/ ${PROJECT_SOURCE_DIR}/exception/)
 
 add_executable(${TRACEROUTE_TESTS_NAME} test/traceroute_test.cpp src/Traceroute.cpp)
 

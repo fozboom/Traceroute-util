@@ -1,3 +1,7 @@
-//
-// Created by daniel on 9/28/24.
-//
+#include <Traceroute.hpp>
+
+int main() {
+  const Traceroute kTraceroute("darkrrsrewrpg.ru", 30);
+  std::cout << "Target ip: " << kTraceroute.GetTargetIp() << std::endl;
+  return 0;
+}
