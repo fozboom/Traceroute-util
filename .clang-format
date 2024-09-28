@@ -1,0 +1,11 @@
+
+BasedOnStyle: Google
+
+Language: Cpp
+
+DerivePointerAlignment: false
+PointerAlignment: Left
+ReferenceAlignment: Left
+AlignTrailingComments: true
+IncludeBlocks: Regroup
+AllowShortFunctionsOnASingleLine: None
