@@ -5,7 +5,6 @@
 #include <HostnameResolutionException.hpp>
 #include <SocketCreationException.hpp>
 #include <iostream>
-#include <cstdlib>
 #include <netinet/ip_icmp.h>
 #include <unistd.h>
 #include <thread>
@@ -13,18 +12,10 @@
 
 Traceroute::Traceroute(const std::string& target_name, int max_hops):
   hostname_(target_name), max_hops_(max_hops) {
-  try {
     // initialize target_ip_ using hostname_
     ResolveHostnameToIp();
     // create ICMP socket
     CreateSocket();
-  } catch (const HostnameResolutionException& e) {
-    std::cerr << "Hostname resolution error: " << e.what() << std::endl;
-    std::exit(EXIT_FAILURE);
-  } catch (const SocketCreationException& e) {
-    std::cerr << "Socket creation error: " << e.what() << std::endl;
-    std::exit(EXIT_FAILURE);
-  }
 }
 
 std::string Traceroute::GetTargetIp() const {

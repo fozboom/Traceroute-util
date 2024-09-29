@@ -5,6 +5,7 @@
 #include <mutex>
 #include <map>
 class Traceroute {
+protected:
   std::string hostname_;        // Target hostname
   std::string target_ip_;       // Target IP address (resolved from hostname_)
   sockaddr target_address_;     // Target address
@@ -25,6 +26,7 @@ public:
   ~Traceroute() = default;
   void RunTraceroute();                       // Run the traceroute logic
   std::string GetTargetIp() const;            // Get the target IP address
+
 
 };
 #endif //TRACEROUTE_HPP
