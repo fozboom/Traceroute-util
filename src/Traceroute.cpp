@@ -9,17 +9,30 @@
 #include <unistd.h>
 #include <thread>
 #include <vector>
+#include <fstream>
 
 Traceroute::Traceroute(const std::string& target_name, int max_hops):
   hostname_(target_name), max_hops_(max_hops) {
-    // initialize target_ip_ using hostname_
-    ResolveHostnameToIp();
-    // create ICMP socket
-    CreateSocket();
+  // initialize target_ip_ using hostname_
+  ResolveHostnameToIp();
+  // create ICMP socket
+  CreateSocket();
 }
 
 std::string Traceroute::GetTargetIp() const {
   return target_ip_;
+}
+
+void Traceroute::SaveResultsToFile(const std::string& filename) const {
+  std::ofstream file(filename);
+  if (!file.is_open()) {
+    throw std::runtime_error("Error while opening file for writing");
+  }
+  for (const auto& [ttl, ip] : ttl_to_ip_) {
+    file << ttl << ": " << ip << std::endl;
+  }
+  file << "Traceroute finished for " << target_ip_ << std::endl;
+  file.close();
 }
 
 void Traceroute::CreateSocket() {

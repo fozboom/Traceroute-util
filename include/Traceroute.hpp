@@ -26,6 +26,7 @@ public:
   ~Traceroute() = default;
   void RunTraceroute();                       // Run the traceroute logic
   std::string GetTargetIp() const;            // Get the target IP address
+  void SaveResultsToFile(const std::string& filename) const;
 
 
 };
