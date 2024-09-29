@@ -1,7 +1,8 @@
 #include <Traceroute.hpp>
-
+#include <iostream>
 int main() {
-  const Traceroute kTraceroute("darkrrsrewrpg.ru", 30);
-  std::cout << "Target ip: " << kTraceroute.GetTargetIp() << std::endl;
+  Traceroute traceroute("185.117.0.85", 30);
+  std::cout << "Target ip: " << traceroute.GetTargetIp() << std::endl;
+  traceroute.RunTraceroute();
   return 0;
 }
